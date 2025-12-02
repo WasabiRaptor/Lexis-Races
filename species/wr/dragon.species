@@ -1,0 +1,209 @@
+{
+	"kind" : "wr/dragon",
+
+	"charCreationTooltip" : {
+		"title" : "Dragon",
+		"subTitle" : "",
+		"description" : ""
+	},
+
+	"nameGen" : [ "/species/wr/dragon.species:nameGenConfig", "/species/wr/dragon.species:nameGenConfig" ],
+	"nameGenConfig": ["Dragon!"],
+
+	"humanoidConfig" : "/humanoid/wr/quadruped/quadruped.config",
+	"buildScripts" : ["/humanoid/opensb/build.lua"],
+	"createScripts" : ["/species/wr/dragon.lua"],
+	"potionRarity": "essential",
+	"humanoidOverrides" : {
+		"animation" : {
+			"version" : 1,
+			"includes" : [
+				"/humanoid/wr/quadruped/quadruped.animation",
+				"/humanoid/wr/dragon/wings.animation"
+			],
+			"globalTagDefaults" : {
+				"emoteFrontFrameset" : "",
+				"emoteBackFrameset" : "",
+				"emoteFrontFlippedFrameset" : "",
+				"emoteBackFlippedFrameset" : ""
+			},
+			"animatedParts" : {
+				"parts" : {
+					"head": {
+						"properties": {
+							"offset" : [0.9375, -0.0625]
+						}
+					},
+					"anchor" : {
+						"partStates" : {
+							"portraitMode" : {
+								"head" : {"properties":{"offset":[-1, 0.125]}}
+							}
+						}
+					},
+					"facialMask" : {
+						"properties" : {
+							"zLevel":21.1,
+							"processingDirectives" : "<facialMaskDirectives>"
+						}
+					},
+					"facialHair" : {
+						"properties" : {
+							"zLevel" : 5.91,
+							"processingDirectives" : "<facialMaskDirectives>"
+						}
+					}
+				}
+			},
+			"transformationGroups" : {}
+		},
+		"identityFramesetTags" : {
+			"hairFrameset" : "<hairGroup>/<hairType>.png",
+			"facialHairFrameset" : "<facialMaskGroup>/<facialMaskType>_back.png",
+			"facialMaskFrameset" : "<facialMaskGroup>/<facialMaskType>_front.png",
+
+			"hairFlippedFrameset" : "<hairGroup>/<hairType>.png",
+			"facialHairFlippedFrameset" : "<facialMaskGroup>/<facialMaskType>_back.png",
+			"facialMaskFlippedFrameset" : "<facialMaskGroup>/<facialMaskType>_front.png"
+		},
+		"movementParameters" : {
+			"airJumpProfile" : {
+				"multiJump" : true
+			}
+		},
+		"sbqConfig" : {
+			"transformResult": {
+				"species": "any"
+			}
+		}
+	},
+
+	// these are the ouch noises! you'll probably want to make them point to the sounds your OC would make when hurt, that being custom, or another species'
+	"ouchNoises" : [ "/sfx/humanoid/humanhurt_male1.ogg", "/sfx/humanoid/humanhurt_male1.ogg" ],
+
+
+	"skull" : "/humanoid/human/dead.png",
+	"effectDirectives" : "?replace;FEFFFFFF=FFFFFFFF;9bd4ffFF=ff99e6FF;31a6ffFF=e359b9FF",
+
+	"genders" : [
+		{
+			"name" : "male",
+			"image" : "/interface/title/male.png",
+			"characterImage" : "/humanoid/wr/dragon/icon.png"
+		},
+		{
+			"name" : "male",
+			"image" : "/interface/title/male.png",
+			"characterImage" : "/humanoid/wr/dragon/icon.png"
+		}
+	],
+	"baseColorPalette" : {
+		"primary" : ["0f0d0d","191616","221f1f"], // black scales
+		"secondary" : ["a82a22","c7372e","e34a40"], // gemstones
+		"tertiary" : ["401010","511616","662121"], // underbelly
+		"flesh" : ["2e0b0b", "471010", "611818"]
+	},
+	"charGenTextLabels" : [
+		"-", // body color
+		"-", // hair type
+		"-", // shirt
+		"-", // pants
+
+		"-", // alt option - undy color - facial mask
+		"-", // head option - hair color - facial hair
+		"-", // shirt color
+		"-", // pants color
+
+		"Dragon", // species
+		"Personality" // personality
+	],
+	"horns" : [ "0" ],
+	"bodyColor" : [
+		"?replace;a82a22=a82a22FE;c7372e=c7372eFE;e34a40=e34a40FE;" // make gems fullbright
+	],
+	"eyeColor" : [
+		"?replace;a84b20=a84b20FE;b65325=b65325FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;" // make eyes fullbright
+	],
+
+	"fallbackShip" : "glitch",
+	"charCreationPatch" : true,
+
+
+	"defaultBlueprints" : {
+		"tier1" : [
+
+// Empty Hands
+			{ "item" : "flaghuman" },
+
+// Anvil
+			{ "item" : "humantier1head" },
+			{ "item" : "humantier1chest" },
+			{ "item" : "humantier1pants" },
+			{ "item" : "humantier2head" },
+			{ "item" : "humantier2chest" },
+			{ "item" : "humantier2pants" },
+
+			{ "item" : "ironshortsword" },
+			{ "item" : "ironbroadsword" },
+			{ "item" : "tungstenaxe" },
+			{ "item" : "tungstenhammer" },
+
+// Anvil2
+			{ "item" : "humantier3head" },
+			{ "item" : "humantier3chest" },
+			{ "item" : "humantier3pants" },
+			{ "item" : "humantier4head" },
+			{ "item" : "humantier4chest" },
+			{ "item" : "humantier4pants" },
+
+			{ "item" : "titaniumdagger" },
+			{ "item" : "titaniumspear" },
+			{ "item" : "durasteelbroadsword" },
+			{ "item" : "durasteelshortsword" },
+
+// Anvil3
+			{ "item" : "humantier5ahead" },
+			{ "item" : "humantier5achest" },
+			{ "item" : "humantier5apants" },
+			{ "item" : "humantier6ahead" },
+			{ "item" : "humantier6achest" },
+			{ "item" : "humantier6apants" },
+
+			{ "item" : "humantier5mhead" },
+			{ "item" : "humantier5mchest" },
+			{ "item" : "humantier5mpants" },
+			{ "item" : "humantier6mhead" },
+			{ "item" : "humantier6mchest" },
+			{ "item" : "humantier6mpants" },
+
+			{ "item" : "humantier5shead" },
+			{ "item" : "humantier5schest" },
+			{ "item" : "humantier5spants" },
+			{ "item" : "humantier6shead" },
+			{ "item" : "humantier6schest" },
+			{ "item" : "humantier6spants" },
+
+			{ "item" : "aegisaltpistol" },
+			{ "item" : "aegisaltbow" },
+			{ "item" : "feroziumwand" },
+			{ "item" : "feroziumstaff" },
+			{ "item" : "violiumshortsword" },
+			{ "item" : "violiumbroadsword" },
+
+// Furniture Table 2
+			{ "item" : "humanstoragelocker" },
+			{ "item" : "humanshipdoor" },
+			{ "item" : "humanshiphatch" },
+
+// Spinning Wheel
+			{ "item" : "conceptchest" },
+			{ "item" : "conceptlegs" },
+			{ "item" : "coolchest" },
+			{ "item" : "coollegs" },
+			{ "item" : "sweatervestchest" },
+			{ "item" : "sweatervestlegs" },
+			{ "item" : "workoutchest" },
+			{ "item" : "workoutlegs" }
+		]
+	}
+}

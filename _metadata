@@ -8,7 +8,7 @@
 	"requires" : ["wr_lib"],
 	"includes" : [],
 	"scripts" : {
-		"onLoad" : []
+		"onLoad" : ["/scripts/wr/races/species_onload.lua"]
 	}
 
 }
