@@ -1,0 +1,14 @@
+{
+	"version" : "0.0",
+	"tags" : "",
+	"author" : "Zygan, Wasabi_Raptor",
+	"description" : "",
+	"name" : "wr_races",
+	"friendlyName" : "Lexi's Races Mod",
+	"requires" : ["wr_lib"],
+	"includes" : [],
+	"scripts" : {
+		"onLoad" : []
+	}
+
+}
