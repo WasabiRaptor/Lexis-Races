@@ -13,7 +13,6 @@
 	"humanoidConfig" : "/humanoid/wr/quadruped/quadruped.config",
 	"buildScripts" : ["/humanoid/opensb/build.lua"],
 	"createScripts" : ["/species/wr/dragon.lua"],
-	"potionRarity": "essential",
 	"humanoidOverrides" : {
 		"animation" : {
 			"version" : 1,
@@ -98,9 +97,9 @@
 		}
 	],
 	"baseColorPalette" : {
-		"primary" : ["0f0d0d","191616","221f1f"], // black scales
-		"secondary" : ["a82a22","c7372e","e34a40"], // gemstones
-		"tertiary" : ["401010","511616","662121"], // underbelly
+		"primary" : ["510e0e","631515","801616"], // body
+		"secondary" : ["8b8b8b","b4b4b4","d6d6d6"], // belly
+		"tertiary" : ["171515","1d1b1b","292525"], // scales
 		"flesh" : ["2e0b0b", "471010", "611818"]
 	},
 	"charGenTextLabels" : [
