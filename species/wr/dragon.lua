@@ -9,22 +9,34 @@ local function wrap(index, length, secondary, secondaryLength)
 	if index < length then return index end
 	return math.fmod(index, length)
 end
-function create(name, species, genderIndex, bodyColor, eyeColor, hornsStyle, _4, _5, _6, _7, _8, personality, ...)
+function create(name, species, genderIndex, bodyColor, hornsStyle, scaleColor, hornsColor, bellyColor, eyeColor, innerWingColor, _8, personality, outerWingColor, ...)
 	-- these values are zero indexed!
 
 	local speciesConfig = root.speciesConfig(species)
 	local humanoidConfig = sb.jsonMerge(root.assetJson(speciesConfig.humanoidConfig or "/humanoid.config"), speciesConfig.humanoidOverrides or {})
 
-
 	genderIndex = wrap(genderIndex, #speciesConfig.genders)
 	local gender = speciesConfig.genders[genderIndex+1]
-	hornsStyle = wrap(hornsStyle, #speciesConfig.horns)
+
+	outerWingColor = wrap(outerWingColor, #speciesConfig.outerWingColor, innerWingColor, #speciesConfig.innerWingColor)
+	innerWingColor = wrap(innerWingColor, #speciesConfig.innerWingColor)
+	hornsColor = wrap(hornsColor, #speciesConfig.hornsColor)
+
 	bodyColor = wrap(bodyColor, #speciesConfig.bodyColor)
+	scaleColor = wrap(scaleColor, #speciesConfig.scaleColor)
+	bellyColor = wrap(bellyColor, #speciesConfig.bellyColor)
 	eyeColor = wrap(eyeColor, #speciesConfig.eyeColor)
+
+	hornsStyle = wrap(hornsStyle, #speciesConfig.horns)
 	personality = wrap(personality, #humanoidConfig.personalities)
 
 	local directives = ""
+	directives = directives..(speciesConfig.innerWingColor[innerWingColor+1])
+	directives = directives..(speciesConfig.outerWingColor[outerWingColor+1])
+	directives = directives..(speciesConfig.hornsColor[hornsColor+1])
 	directives = directives..(speciesConfig.bodyColor[bodyColor+1])
+	directives = directives..(speciesConfig.scaleColor[scaleColor+1])
+	directives = directives..(speciesConfig.bellyColor[bellyColor+1])
 	directives = directives..(speciesConfig.eyeColor[eyeColor+1])
 
 	local personalityIdle, personalityArmIdle, personalityHeadOffset, personalityArmOffset = table.unpack(humanoidConfig.personalities[personality+1])
@@ -51,7 +63,7 @@ function create(name, species, genderIndex, bodyColor, eyeColor, hornsStyle, _4,
 		color = {51, 117, 237, 255},
 	}
 	local parameters = {
-		choices = { genderIndex, bodyColor, eyeColor, hornsStyle, _4, _5, _6, _7, _8, personality, ... },
+		choices = { genderIndex, bodyColor, hornsStyle, scaleColor, hornsColor, bellyColor, eyeColor, innerWingColor, _8, personality, outerWingColor, ... },
 		--this you can do a lot with, see the humanoid build script
 	}
 	local armor = {
