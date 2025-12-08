@@ -91,7 +91,7 @@
 			"characterImage" : "/humanoid/wr/dragon/icon.png"
 		},
 		{
-			"name" : "male",
+			"name" : "female",
 			"image" : "/interface/title/female.png",
 			"characterImage" : "/humanoid/wr/dragon/icon.png"
 		}
