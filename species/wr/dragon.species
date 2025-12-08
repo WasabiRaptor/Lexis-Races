@@ -122,17 +122,37 @@
 	],
 	"horns" : [ "0" ],
 	"bodyColor" : [
-		"?replace;510e0e=520e0e;631515=641515;801616=811616;" // red
+		"?replace;510e0e=7c7c7c;631515=aaaaaa;801616=cdcdcd;", // white
+		"?replace;510e0e=131212;631515=1c1a1a;801616=363131;", // black
+		"?replace;510e0e=696868;631515=767676;801616=909090;", // grey
+		"?replace;510e0e=520e0e;631515=641515;801616=811616;", // red
+		"?replace;510e0e=b34e0b;631515=cd5b10;801616=e36c1d;", // orange
+		"?replace;510e0e=c98706;631515=dca10f;801616=e9bc18;" // yellow
 	],
 	"scaleColor" : [
-		"?replace;141212=151212;1d1b1b=1e1b1b;292525=2a2525;" // black
+		"?replace;141212=818181;1d1b1b=a1a1a1;292525=bbbbbb;", // white
+		"?replace;141212=151212;1d1b1b=1e1b1b;292525=2a2525;", // black
+		"?replace;141212=5c5c5c;1d1b1b=666666;292525=818181;", // grey
+		"?replace;141212=410505;1d1b1b=570808;292525=690e0e;", // red
+		"?replace;141212=b13e0b;1d1b1b=c44710;292525=e05619;", // orange
+		"?replace;141212=c98211;1d1b1b=d69913;292525=e9ad18;" // yellow
 	],
 	"bellyColor" : [
-		"?replace;8b8b8b=8c8b8b;b4b4b4=b5b4b4;d6d6d6=d7d6d6;" // white
+		"?replace;8b8b8b=8c8c8c;b4b4b4=b5b5b5;d6d6d6=d7d7d7;", // white
+		"?replace;8b8b8b=211d1d;b4b4b4=2c2828;d6d6d6=3f3b3b;", // black
+		"?replace;8b8b8b=676767;b4b4b4=7b7b7b;d6d6d6=9f9f9f;", // grey
+		"?replace;8b8b8b=661010;b4b4b4=781414;d6d6d6=8e1b1b;", // red
+		"?replace;8b8b8b=c4691d;b4b4b4=da7724;d6d6d6=eb822b;", // orange
+		"?replace;8b8b8b=c09212;b4b4b4=e0ac1b;d6d6d6=ebca2b;" // yellow
 	],
 	"eyeColor" : [
-		"?replace;001b9c=001b9cFE;0c27a8=0c27a8FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;" // Blue - White
-	],
+		"?replace;001b9c=a11c01FE;0c27a8=c22000FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;", // Red - White
+		"?replace;001b9c=e76800FE;0c27a8=ff8b00FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;", // Orange - White
+		"?replace;001b9c=eeaf00FE;0c27a8=ffda00FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;", // Yellow - White
+		"?replace;001b9c=3c9b00FE;0c27a8=34b100FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;", // Green - White
+		"?replace;001b9c=001b9cFE;0c27a8=0c27a8FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;", // Blue - White
+		"?replace;001b9c=58009fFE;0c27a8=6700b9FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;" // Purple - White
+],
 
 	"outerWingColor" : [
 		"?replace;00685a=510e0e;06917f=631515;12cbb3=801616;", // matches body
@@ -158,15 +178,15 @@
 		"tier1" : [
 
 // Empty Hands
-			{ "item" : "flaghuman" },
+			{ "item" : "flagglitch" },
 
 // Anvil
-			{ "item" : "humantier1head" },
-			{ "item" : "humantier1chest" },
-			{ "item" : "humantier1pants" },
-			{ "item" : "humantier2head" },
-			{ "item" : "humantier2chest" },
-			{ "item" : "humantier2pants" },
+			{ "item" : "glitchtier1head" },
+			{ "item" : "glitchtier1chest" },
+			{ "item" : "glitchtier1pants" },
+			{ "item" : "glitchtier2head" },
+			{ "item" : "glitchtier2chest" },
+			{ "item" : "glitchtier2pants" },
 
 			{ "item" : "ironshortsword" },
 			{ "item" : "ironbroadsword" },
@@ -174,12 +194,12 @@
 			{ "item" : "tungstenhammer" },
 
 // Anvil2
-			{ "item" : "humantier3head" },
-			{ "item" : "humantier3chest" },
-			{ "item" : "humantier3pants" },
-			{ "item" : "humantier4head" },
-			{ "item" : "humantier4chest" },
-			{ "item" : "humantier4pants" },
+			{ "item" : "glitchtier3head" },
+			{ "item" : "glitchtier3chest" },
+			{ "item" : "glitchtier3pants" },
+			{ "item" : "glitchtier4head" },
+			{ "item" : "glitchtier4chest" },
+			{ "item" : "glitchtier4pants" },
 
 			{ "item" : "titaniumdagger" },
 			{ "item" : "titaniumspear" },
@@ -187,26 +207,26 @@
 			{ "item" : "durasteelshortsword" },
 
 // Anvil3
-			{ "item" : "humantier5ahead" },
-			{ "item" : "humantier5achest" },
-			{ "item" : "humantier5apants" },
-			{ "item" : "humantier6ahead" },
-			{ "item" : "humantier6achest" },
-			{ "item" : "humantier6apants" },
+			{ "item" : "glitchtier5ahead" },
+			{ "item" : "glitchtier5achest" },
+			{ "item" : "glitchtier5apants" },
+			{ "item" : "glitchtier6ahead" },
+			{ "item" : "glitchtier6achest" },
+			{ "item" : "glitchtier6apants" },
 
-			{ "item" : "humantier5mhead" },
-			{ "item" : "humantier5mchest" },
-			{ "item" : "humantier5mpants" },
-			{ "item" : "humantier6mhead" },
-			{ "item" : "humantier6mchest" },
-			{ "item" : "humantier6mpants" },
+			{ "item" : "glitchtier5mhead" },
+			{ "item" : "glitchtier5mchest" },
+			{ "item" : "glitchtier5mpants" },
+			{ "item" : "glitchtier6mhead" },
+			{ "item" : "glitchtier6mchest" },
+			{ "item" : "glitchtier6mpants" },
 
-			{ "item" : "humantier5shead" },
-			{ "item" : "humantier5schest" },
-			{ "item" : "humantier5spants" },
-			{ "item" : "humantier6shead" },
-			{ "item" : "humantier6schest" },
-			{ "item" : "humantier6spants" },
+			{ "item" : "glitchtier5shead" },
+			{ "item" : "glitchtier5schest" },
+			{ "item" : "glitchtier5spants" },
+			{ "item" : "glitchtier6shead" },
+			{ "item" : "glitchtier6schest" },
+			{ "item" : "glitchtier6spants" },
 
 			{ "item" : "aegisaltpistol" },
 			{ "item" : "aegisaltbow" },
@@ -216,19 +236,19 @@
 			{ "item" : "violiumbroadsword" },
 
 // Furniture Table 2
-			{ "item" : "humanstoragelocker" },
-			{ "item" : "humanshipdoor" },
-			{ "item" : "humanshiphatch" },
+			{ "item" : "glitchstoragelocker" },
+			{ "item" : "glitchshipdoor" },
+			{ "item" : "glitchshiphatch" },
 
 // Spinning Wheel
-			{ "item" : "conceptchest" },
-			{ "item" : "conceptlegs" },
-			{ "item" : "coolchest" },
-			{ "item" : "coollegs" },
-			{ "item" : "sweatervestchest" },
-			{ "item" : "sweatervestlegs" },
-			{ "item" : "workoutchest" },
-			{ "item" : "workoutlegs" }
+			{ "item" : "craftsmenchest" },
+			{ "item" : "craftsmenlegs" },
+			{ "item" : "merchantchest" },
+			{ "item" : "merchantlegs" },
+			{ "item" : "noblechest" },
+			{ "item" : "noblelegs" },
+			{ "item" : "peasantchest" },
+			{ "item" : "peasantlegs" }
 		]
 	}
 }
