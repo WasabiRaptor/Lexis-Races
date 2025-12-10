@@ -1,0 +1,233 @@
+{
+	"kind" : "wr/drimyr_big",
+
+	"charCreationTooltip" : {
+		"title" : "drimyr_big",
+		"subTitle" : "",
+		"description" : ""
+	},
+
+	"nameGen" : [ "/species/wr/drimyr_big.species:nameGenConfig", "/species/wr/drimyr_big.species:nameGenConfig" ],
+	"nameGenConfig": ["drimyr_big!"],
+
+	"humanoidConfig" : "/humanoid/wr/quadruped_big/quadruped_big.config",
+	"buildScripts" : ["/humanoid/opensb/build.lua"],
+	"createScripts" : ["/species/wr/drimyr.lua"],
+	"humanoidOverrides" : {
+		"animation" : {
+			"version" : 1,
+			"includes" : [
+				"/humanoid/wr/quadruped_big/hexaped_big.animation",
+				"/humanoid/wr/drimyr_big/wings.animation"
+			],
+			"globalTagDefaults" : {
+			},
+			"animatedParts" : {
+				"parts" : {
+					"hair" : {
+						"properties" : {
+							"zLevel" : 8.9
+						}
+					},
+					"facialHair" : {
+						"properties" : {
+							"anchorPart" : "body",
+							"transformationGroups" : ["headOffset"],
+							"offset" : [1.5,0],
+							"zLevel" : 13.9,
+							"processingDirectives" : "<facialHairDirectives>"
+						}
+					}
+				}
+			},
+			"transformationGroups" : {}
+		},
+		"identityFramesetTags" : {
+		},
+		"movementParameters" : {
+			"airJumpProfile" : {
+				"multiJump" : true
+			}
+		},
+		"sbqConfig" : {
+			"transformResult": {
+				"species": "any"
+			}
+		}
+	},
+
+	// these are the ouch noises! you'll probably want to make them point to the sounds your OC would make when hurt, that being custom, or another species'
+	"ouchNoises" : [ "/sfx/humanoid/humanhurt_male1.ogg", "/sfx/humanoid/humanhurt_male1.ogg" ],
+
+
+	"skull" : "/humanoid/human/dead.png",
+	"effectDirectives" : "?replace;FEFFFFFF=FFFFFFFF;9bd4ffFF=ff99e6FF;31a6ffFF=e359b9FF",
+
+	"genders" : [
+		{
+			"name" : "male",
+			"image" : "/interface/title/male.png",
+			"characterImage" : "/humanoid/wr/drimyr_big/icon.png"
+		},
+		{
+			"name" : "female",
+			"image" : "/interface/title/female.png",
+			"characterImage" : "/humanoid/wr/drimyr_big/icon.png"
+		}
+	],
+	"baseColorPalette" : {
+		"primary" : ["510e0e","631515","801616"], // body
+		"secondary" : ["141212","1d1b1b","292525"], // scales
+		"tertiary" : ["8b8b8b","b4b4b4","d6d6d6"], // belly
+		"outerWing" : ["00685a", "06917f", "12cbb3"],
+		"innerWing" : ["126800", "178500", "1ca200"],
+		"horns" : ["ae7400", "cf8e0e", "fbae16"],
+		"eyeColor" : [ "001b9c", "0c27a8","f0e3de","fff7f4"],
+		"flesh" : ["2e0b0b", "471010", "611818"]
+	},
+	"charGenTextLabels" : [
+		"Body Color", // body color
+		"Scale Color", // hair type
+		"Belly Color", // shirt
+		"Wings", // pants
+
+		"Horns Style", // alt option - undy color - facial mask
+		"Horns Color", // head option - hair color - facial hair
+		"Eye Color", // shirt color
+		"-", // pants color
+
+		"drimyr_big", // species
+		"Personality" // personality
+	],
+	"horns" : [ "0" ],
+	"bodyColor" : [
+		"?replace;510e0e=7c7c7c;631515=aaaaaa;801616=cdcdcd;", // white
+		"?replace;510e0e=131212;631515=1c1a1a;801616=363131;", // black
+		"?replace;510e0e=696868;631515=767676;801616=909090;", // grey
+		"?replace;510e0e=520e0e;631515=641515;801616=811616;", // red
+		"?replace;510e0e=b34e0b;631515=cd5b10;801616=e36c1d;", // orange
+		"?replace;510e0e=c98706;631515=dca10f;801616=e9bc18;" // yellow
+	],
+	"scaleColor" : [
+		"?replace;141212=818181;1d1b1b=a1a1a1;292525=bbbbbb;", // white
+		"?replace;141212=151212;1d1b1b=1e1b1b;292525=2a2525;", // black
+		"?replace;141212=5c5c5c;1d1b1b=666666;292525=818181;", // grey
+		"?replace;141212=410505;1d1b1b=570808;292525=690e0e;", // red
+		"?replace;141212=b13e0b;1d1b1b=c44710;292525=e05619;", // orange
+		"?replace;141212=c98211;1d1b1b=d69913;292525=e9ad18;" // yellow
+	],
+	"bellyColor" : [
+		"?replace;8b8b8b=8c8c8c;b4b4b4=b5b5b5;d6d6d6=d7d7d7;", // white
+		"?replace;8b8b8b=211d1d;b4b4b4=2c2828;d6d6d6=3f3b3b;", // black
+		"?replace;8b8b8b=676767;b4b4b4=7b7b7b;d6d6d6=9f9f9f;", // grey
+		"?replace;8b8b8b=661010;b4b4b4=781414;d6d6d6=8e1b1b;", // red
+		"?replace;8b8b8b=c4691d;b4b4b4=da7724;d6d6d6=eb822b;", // orange
+		"?replace;8b8b8b=c09212;b4b4b4=e0ac1b;d6d6d6=ebca2b;" // yellow
+	],
+	"eyeColor" : [
+		"?replace;001b9c=a11c01FE;0c27a8=c22000FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;", // Red - White
+		"?replace;001b9c=e76800FE;0c27a8=ff8b00FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;", // Orange - White
+		"?replace;001b9c=eeaf00FE;0c27a8=ffda00FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;", // Yellow - White
+		"?replace;001b9c=3c9b00FE;0c27a8=34b100FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;", // Green - White
+		"?replace;001b9c=001b9cFE;0c27a8=0c27a8FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;", // Blue - White
+		"?replace;001b9c=58009fFE;0c27a8=6700b9FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;" // Purple - White
+],
+
+	"outerWingColor" : [
+		"?replace;00685a=510e0e;06917f=631515;12cbb3=801616;", // matches body
+		"?replace;00685a=141212;06917f=1d1b1b;12cbb3=292525;", // matches scales
+		"?replace;00685a=8b8b8b;06917f=b4b4b4;12cbb3=d6d6d6;" // matches belly
+	],
+	"innerWingColor" : [
+		"?replace;126800=510e0e;178500=631515;1ca200=801616;", // matches body
+		"?replace;126800=141212;178500=1d1b1b;1ca200=292525;", // matches scales
+		"?replace;126800=8b8b8b;178500=b4b4b4;1ca200=d6d6d6;" // matches belly
+	],
+	"hornsColor" : [
+		"?replace;ae7400=141212;cf8e0e=1d1b1b;fbae16=292525;", // matches scales
+		"?replace;ae7400=8b8b8b;cf8e0e=b4b4b4;fbae16=d6d6d6;" // matches belly
+	],
+
+
+	"fallbackShip" : "glitch",
+	"charCreationPatch" : true,
+
+
+	"defaultBlueprints" : {
+		"tier1" : [
+
+// Empty Hands
+			{ "item" : "flagglitch" },
+
+// Anvil
+			{ "item" : "glitchtier1head" },
+			{ "item" : "glitchtier1chest" },
+			{ "item" : "glitchtier1pants" },
+			{ "item" : "glitchtier2head" },
+			{ "item" : "glitchtier2chest" },
+			{ "item" : "glitchtier2pants" },
+
+			{ "item" : "ironshortsword" },
+			{ "item" : "ironbroadsword" },
+			{ "item" : "tungstenaxe" },
+			{ "item" : "tungstenhammer" },
+
+// Anvil2
+			{ "item" : "glitchtier3head" },
+			{ "item" : "glitchtier3chest" },
+			{ "item" : "glitchtier3pants" },
+			{ "item" : "glitchtier4head" },
+			{ "item" : "glitchtier4chest" },
+			{ "item" : "glitchtier4pants" },
+
+			{ "item" : "titaniumdagger" },
+			{ "item" : "titaniumspear" },
+			{ "item" : "durasteelbroadsword" },
+			{ "item" : "durasteelshortsword" },
+
+// Anvil3
+			{ "item" : "glitchtier5ahead" },
+			{ "item" : "glitchtier5achest" },
+			{ "item" : "glitchtier5apants" },
+			{ "item" : "glitchtier6ahead" },
+			{ "item" : "glitchtier6achest" },
+			{ "item" : "glitchtier6apants" },
+
+			{ "item" : "glitchtier5mhead" },
+			{ "item" : "glitchtier5mchest" },
+			{ "item" : "glitchtier5mpants" },
+			{ "item" : "glitchtier6mhead" },
+			{ "item" : "glitchtier6mchest" },
+			{ "item" : "glitchtier6mpants" },
+
+			{ "item" : "glitchtier5shead" },
+			{ "item" : "glitchtier5schest" },
+			{ "item" : "glitchtier5spants" },
+			{ "item" : "glitchtier6shead" },
+			{ "item" : "glitchtier6schest" },
+			{ "item" : "glitchtier6spants" },
+
+			{ "item" : "aegisaltpistol" },
+			{ "item" : "aegisaltbow" },
+			{ "item" : "feroziumwand" },
+			{ "item" : "feroziumstaff" },
+			{ "item" : "violiumshortsword" },
+			{ "item" : "violiumbroadsword" },
+
+// Furniture Table 2
+			{ "item" : "glitchstoragelocker" },
+			{ "item" : "glitchshipdoor" },
+			{ "item" : "glitchshiphatch" },
+
+// Spinning Wheel
+			{ "item" : "craftsmenchest" },
+			{ "item" : "craftsmenlegs" },
+			{ "item" : "merchantchest" },
+			{ "item" : "merchantlegs" },
+			{ "item" : "noblechest" },
+			{ "item" : "noblelegs" },
+			{ "item" : "peasantchest" },
+			{ "item" : "peasantlegs" }
+		]
+	}
+}
