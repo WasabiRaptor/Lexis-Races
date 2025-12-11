@@ -18,7 +18,8 @@
 					"zLevel":-1,
 					"anchorPart" : "body",
 					"transformationGroups" : ["tailOffset"],
-					"processingDirectives" : "<bodyDirectives>"
+					"processingDirectives" : "<bodyDirectives>",
+					"offset" : [-2.75,-1]
 				},
 				"partStates" : {
 					"body": {

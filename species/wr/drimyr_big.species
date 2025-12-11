@@ -36,11 +36,15 @@
 							"offset" : [1.5,0],
 							"zLevel" : 13.9,
 							"processingDirectives" : "<facialHairDirectives>"
+						},
+						"partStates" : {
+							"body" : {
+								"duck" : {"properties" : {"offset":[1.375,0.25]}}
+							}
 						}
 					}
 				}
-			},
-			"transformationGroups" : {}
+			}
 		},
 		"identityFramesetTags" : {
 		},
