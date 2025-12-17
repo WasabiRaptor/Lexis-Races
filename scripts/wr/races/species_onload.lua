@@ -10,6 +10,20 @@ local player_patch = {}
 local quests_patch = {}
 local aiConfig = assets.json("/ai/ai.config")
 local universeServerConfig = assets.json("/universe_server.config")
+local radioMessagePatches = {}
+
+local baseTenant = assets.json("/tenants/villager_random.tenant")
+local baseGuardTenant = assets.json("/tenants/guards/guard_random.tenant")
+local baseMerchantTenant = assets.json("/tenants/merchant_random.tenant")
+local baseChefTenant = assets.json("/tenants/chef_random.tenant")
+local randomTenantPatch = jarray()
+local randomGuardTenantPatch = jarray()
+local randomMerchantTenantPatch = jarray()
+local randomChefTenantPatch = jarray()
+local randomTieredGuardTenantPatches = jarray()
+for i = 2, 10 do
+	randomTieredGuardTenantPatches[i] = jarray()
+end
 for _, species in ipairs(races) do
 	local speciesConfig = assets.json("/species/" .. species .. ".species")
 	if speciesConfig.charCreationPatch ~= false then
@@ -52,12 +66,41 @@ for _, species in ipairs(races) do
 			assets.image("/cinematics/story/smallship/"..fallbackShip.."ship2.png"))
 	end
 
+	if speciesConfig.messagesConfig then
+		local messages = assets.json(speciesConfig.messagesConfig.messages)
+		for _, path in ipairs(assets.byExtension("radiomessages")) do
+			radioMessagePatches[path] = radioMessagePatches[path] or {}
+			for messageID, message in pairs(assets.json(path)) do
+				if messages[messageID] then
+					radioMessagePatches[path][messageID] = radioMessagePatches[path][messageID] or {}
+					radioMessagePatches[path][messageID].speciesMessage = radioMessagePatches[path][messageID].speciesMessage or {}
+					radioMessagePatches[path][messageID].speciesMessage[species] = messages[messageID]
+				end
+			end
+		end
+	end
+
 
 	local ai = speciesConfig.ai or aiConfig.species[fallbackShip] or {
 		aiFrames = "NovakidAI.png",
 		portraitFrames = "portraits/novakidportrait.png",
 		staticFrames = "staticGlitch.png"
 	}
+	if ai.messagesConfig then
+		local messages = assets.json(ai.messagesConfig.messages)
+		local default = assets.json(ai.messagesConfig.default)
+		for _, path in ipairs(assets.byExtension("radiomessages")) do
+			radioMessagePatches[path] = radioMessagePatches[path] or {}
+			for messageID, message in pairs(assets.json(path)) do
+				if (not message.senderName) or (message.senderName == "SAIL") or (message.senderName == "S.A.I.L") then
+					radioMessagePatches[path][messageID] = radioMessagePatches[path][messageID] or {}
+					radioMessagePatches[path][messageID].speciesAiMessage = radioMessagePatches[path][messageID].speciesAiMessage or {}
+					radioMessagePatches[path][messageID].speciesAiMessage[species] = sb.jsonMerge(default, messages[messageID])
+				end
+			end
+		end
+	end
+
 	if ai.directives then
 		assets.add("/ai/" .. species .. "/ai.png", assets.image("/ai/" .. ai.aiFrames):process(ai.directives))
 		assets.add("/ai/" .. species .. "/portrait.png", assets.image("/ai/" .. ai.portraitFrames):process(ai.directives))
@@ -76,7 +119,8 @@ for _, species in ipairs(races) do
 		ai = {
 			aiFrames = species .. "/ai.png",
 			portraitFrames = species .. "/portrait.png",
-			staticFrames = species .. "/static.png"
+			staticFrames = species .. "/static.png",
+			messagesConfig = ai.messagesConfig
 		}
 	else
 		if not assets.exists("/ai/portraits/" .. species .. "portrait.png") then
@@ -173,6 +217,61 @@ for _, species in ipairs(races) do
 			assets.image("/interface/scripted/techupgrade/suits/wr/template-male-legs.png"))
 	end
 
+
+	if speciesConfig.tenantData then
+		assets.add("/tenants/villager_" .. species .. ".tenant", sb.printJson(sb.jsonMerge(baseTenant, {
+			priority = (baseTenant.priority + 1),
+			name = "villager_".. species ,
+			colonyTagCriteria = speciesConfig.tenantData.colonyTagCriteria,
+			tenants = {
+				sb.jsonMerge(baseTenant.tenants[1], {species = species}, speciesConfig.tenantData.tenant or {})
+			},
+		})))
+		table.insert(randomTenantPatch, {op = "add", path = "/tenants/0/species/-", value = species})
+
+		assets.add("/tenants/chef_" .. species .. ".tenant", sb.printJson(sb.jsonMerge(baseChefTenant, {
+			priority = (baseChefTenant.priority + 1),
+			name = "chef_".. species ,
+			colonyTagCriteria = speciesConfig.tenantData.colonyTagCriteria,
+			tenants = {
+				sb.jsonMerge(baseChefTenant.tenants[1], {species = species}, speciesConfig.tenantData.chefTenant or {})
+			},
+		})))
+		table.insert(randomChefTenantPatch, {op = "add", path = "/tenants/0/species/-", value = species})
+
+		assets.add("/tenants/merchant_" .. species .. ".tenant", sb.printJson(sb.jsonMerge(baseMerchantTenant, {
+			priority = (baseMerchantTenant.priority + 1),
+			name = "merchant_".. species ,
+			colonyTagCriteria = speciesConfig.tenantData.colonyTagCriteria,
+			tenants = {
+				sb.jsonMerge(baseMerchantTenant.tenants[1], {species = species}, speciesConfig.tenantData.merchantTenant or {})
+			},
+		})))
+		table.insert(randomMerchantTenantPatch, {op = "add", path = "/tenants/0/species/-", value = species})
+
+
+		assets.add("/tenants/guards/guard_" .. species ..".tenant", sb.printJson(sb.jsonMerge(baseGuardTenant, {
+			priority = (baseGuardTenant.priority + 1),
+			name = "guard_" .. species,
+			colonyTagCriteria = speciesConfig.tenantData.colonyTagCriteria,
+			tenants = {
+				sb.jsonMerge(baseGuardTenant.tenants[1], {species = species}, speciesConfig.tenantData.guardTenant or {})
+			},
+		})))
+		table.insert(randomGuardTenantPatch, { op = "add", path = "/tenants/0/species/-", value = species })
+
+		for i = 2, 10 do
+			assets.add("/tenants/guards/guard_" .. species .. "T".. i .. ".tenant", sb.printJson(sb.jsonMerge(baseGuardTenant, {
+				priority = (baseGuardTenant.priority + 1 + (2*(i-1))),
+				name = "guardT"..i.."_" .. species,
+				colonyTagCriteria = sb.jsonMerge({["tier"..i] = 12}, speciesConfig.tenantData.colonyTagCriteria),
+				tenants = {
+					sb.jsonMerge(baseGuardTenant.tenants[1], {level = i, species = species}, speciesConfig.tenantData.tenant, speciesConfig.tenantData.guardTenant or {})
+				},
+			})))
+			table.insert(randomTieredGuardTenantPatches[i], {op = "add", path = "/tenants/0/species/-", value = species})
+		end
+	end
 	aiConfig = sb.jsonMerge(aiConfig, ai_patch)
 	universeServerConfig = sb.jsonMerge(universeServerConfig, universe_server_patch)
 end
@@ -182,3 +281,14 @@ assets.add("/universe_server.config.patch", sb.printJson(universe_server_patch))
 assets.add("/ai/ai.config.patch", sb.printJson(ai_patch))
 assets.add("/player.config.patch", sb.printJson(player_patch))
 assets.add("/quests/quests.config.patch", sb.printJson(quests_patch))
+for path, patch in pairs(radioMessagePatches) do
+	assets.add(path..".patch", sb.printJson(patch))
+end
+assets.add("/tenants/villager_random.tenant.patch", sb.printJson(randomTenantPatch))
+assets.add("/tenants/guards/guard_random.tenant.patch", sb.printJson(randomGuardTenantPatch))
+assets.add("/tenants/merchant_random.tenant.patch", sb.printJson(randomMerchantTenantPatch))
+assets.add("/tenants/chef_random.tenant.patch", sb.printJson(randomChefTenantPatch))
+
+for i, patch in pairs(randomTieredGuardTenantPatches) do
+	assets.add("/tenants/guards/guard_randomT" .. i .. ".tenant.patch",  sb.printJson(patch))
+end
