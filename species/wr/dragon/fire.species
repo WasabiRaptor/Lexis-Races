@@ -111,7 +111,7 @@
 		"Eye Color", // shirt color
 		"-", // pants color
 
-		"Dragon", // species
+		"Fire Dragon", // species
 		"Personality" // personality
 	],
 	"horns" : [ "0" ],

@@ -109,7 +109,7 @@
 		"Eye Color", // shirt color
 		"-", // pants color
 
-		"dragon_big", // species
+		"Fire Dragon (Big)", // species
 		"Personality" // personality
 	],
 	"horns" : [ "0" ],
