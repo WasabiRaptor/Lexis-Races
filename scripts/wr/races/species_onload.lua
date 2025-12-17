@@ -1,6 +1,6 @@
 local races = {
-	"wr/dragon",
-	"wr/dragon_big",
+	"wr/dragon/fire",
+	"wr/dragon/fire_big",
 	"wr/drimyr_big"
 }
 local charcreation_patch = {}
