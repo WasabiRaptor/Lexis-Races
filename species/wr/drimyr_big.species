@@ -2,13 +2,12 @@
 	"kind" : "wr/drimyr_big",
 
 	"charCreationTooltip" : {
-		"title" : "drimyr_big",
+		"title" : "Drimyr (Big)",
 		"subTitle" : "",
 		"description" : ""
 	},
 
-	"nameGen" : [ "/species/wr/drimyr_big.species:nameGenConfig", "/species/wr/drimyr_big.species:nameGenConfig" ],
-	"nameGenConfig": ["drimyr_big!"],
+	"nameGen" : [ "/species/humanmalenamegen.config:names", "/species/humanfemalenamegen.config:names" ],
 
 	"humanoidConfig" : "/humanoid/wr/quadruped_big/quadruped_big.config",
 	"buildScripts" : ["/humanoid/opensb/build.lua"],
