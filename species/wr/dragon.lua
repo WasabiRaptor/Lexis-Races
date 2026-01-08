@@ -9,7 +9,7 @@ local function wrap(index, length, secondary, secondaryLength)
 	if index < length then return index end
 	return math.fmod(index, length)
 end
-function create(name, species, genderIndex, bodyColor, hornsStyle, scaleColor, hornsColor, bellyColor, eyeColor, innerWingColor, _8, personality, outerWingColor, ...)
+function create(name, species, genderIndex, bodyColor, hornsStyleChoice, scaleColor, hornsColor, bellyColor, eyeColor, innerWingColor, _8, personality, outerWingColor, hornsStyle, hairStyle, ...)
 	-- these values are zero indexed!
 
 	local speciesConfig = root.speciesConfig(species)
@@ -27,7 +27,8 @@ function create(name, species, genderIndex, bodyColor, hornsStyle, scaleColor, h
 	bellyColor = wrap(bellyColor, #speciesConfig.bellyColor)
 	eyeColor = wrap(eyeColor, #speciesConfig.eyeColor)
 
-	hornsStyle = wrap(hornsStyle, #speciesConfig.horns)
+	hornsStyle = wrap(hornsStyle or hornsStyleChoice, #speciesConfig.horns)
+	hairStyle = wrap(hairStyle, #speciesConfig.hair, hornsStyleChoice, #speciesConfig.horns)
 	personality = wrap(personality, #humanoidConfig.personalities)
 
 	local directives = ""
@@ -45,8 +46,8 @@ function create(name, species, genderIndex, bodyColor, hornsStyle, scaleColor, h
 		name = name,
 		species = species,
 		gender = gender.name,
-		hairGroup = "",
-		hairType = "",
+		hairGroup = "hair",
+		hairType = speciesConfig.hair[hairStyle+1],
 		hairDirectives = directives,
 		bodyDirectives = directives,
 		emoteDirectives = directives,
@@ -63,7 +64,7 @@ function create(name, species, genderIndex, bodyColor, hornsStyle, scaleColor, h
 		color = {51, 117, 237, 255},
 	}
 	local parameters = {
-		choices = { genderIndex, bodyColor, hornsStyle, scaleColor, hornsColor, bellyColor, eyeColor, innerWingColor, _8, personality, outerWingColor, ... },
+		choices = { genderIndex, bodyColor, hornsStyleChoice, scaleColor, hornsColor, bellyColor, eyeColor, innerWingColor, _8, personality, outerWingColor, ... },
 		--this you can do a lot with, see the humanoid build script
 	}
 	local armor = {

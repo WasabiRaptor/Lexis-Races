@@ -115,6 +115,7 @@
 		"Personality" // personality
 	],
 	"horns" : [ "0" ],
+	"hair" : [""],
 	"bodyColor" : [
 		"?replace;410b0b=515151;510e0e=7c7c7c;631515=aaaaaa;801616=cdcdcd;", // white
 		"?replace;410b0b=070606;510e0e=131212;631515=1c1a1a;801616=363131;", // black
@@ -146,7 +147,7 @@
 		"?replace;001b9c=3c9b00FE;0c27a8=34b100FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;", // Green - White
 		"?replace;001b9c=001b9cFE;0c27a8=0c27a8FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;", // Blue - White
 		"?replace;001b9c=58009fFE;0c27a8=6700b9FE;f0e3de=f0e3deFE;fff7f4=fff7f4FE;" // Purple - White
-],
+	],
 
 	"outerWingColor" : [
 		"?replace;00685a=510e0e;06917f=631515;12cbb3=801616;", // matches body

@@ -113,6 +113,7 @@
 		"Personality" // personality
 	],
 	"horns" : [ "0" ],
+	"hair" : [""],
 	"bodyColor" : [
 		"?replace;410b0b=515151;510e0e=7c7c7c;631515=aaaaaa;801616=cdcdcd;", // white
 		"?replace;410b0b=070606;510e0e=131212;631515=1c1a1a;801616=363131;", // black
